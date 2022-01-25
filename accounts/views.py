@@ -22,7 +22,7 @@ class LoginView(SuccessMessageMixin, auth_django_views.LoginView):
     success_message = "You have successfully logged in"
 
     def get_redirect_url(self):
-        return reverse('core:home')
+        return super().get_redirect_url() or reverse('core:home')
 
 
 class LogoutView(auth_django_views.LogoutView):

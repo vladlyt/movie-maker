@@ -1,5 +1,5 @@
-from django.views.generic import TemplateView
+from movies.views import MoviesListView
 
 
-class HomeView(TemplateView):
-    template_name = 'home.html'
+class HomeView(MoviesListView):
+    pass

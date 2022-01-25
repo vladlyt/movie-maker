@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>{{ movie.title }}</h1>
+    <img src="{{ movie.photo.url }}" class="img-fluid" alt="{{ movie.title }}">
+
+    <div class="col">
+        <div class="row">
+            <i class="bi bi-star-fill"></i>
+            {#            <img src="{% static "images/star-fill.svg" %}" alt="star"> #}
+            <span>Rate this movie: <a href="{% url "movies:rate" movie.pk %}">here</a></span>
+
+            <p class="text">Year: {{ movie.year }}</p>
+            <p class="text-dark">Director: <a href="#TODO">{{ movie.director }}</a></p>
+            <p class="text-dark">Actors:</p>
+            {% for actor in movie.actors.all %}
+                <p class="text-dark"><a href="#TODO">{{ actor }}</a></p>
+            {% endfor %}
+            <p class="text-dark">Country: {{ movie.country }}</p>
+            {% for genre in movie.genre.all %}
+                <p class="text-dark">Genre: {{ genre }}</p>
+            {% endfor %}
+
+
+        </div>
+
+        <p class="text">{{ movie.description }}</p>
+    </div>
+    </div>
+
+
+{% endblock %}

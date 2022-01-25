@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 
 User = get_user_model()
 
@@ -9,6 +10,7 @@ class Movie(models.Model):
     description = models.TextField(default='')
     year = models.PositiveSmallIntegerField(null=True, blank=True)
     photo = models.ImageField(upload_to='movies_photo', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     director = models.ForeignKey(
         'crew.Director',
         related_name='movies',
@@ -58,6 +60,7 @@ class Rate(models.Model):
         return f'{self.user} rated for {self.movie} with {self.stars} stars'
 
 
+# TODO move to core
 class Country(models.Model):
     name = models.CharField(max_length=128)
 
